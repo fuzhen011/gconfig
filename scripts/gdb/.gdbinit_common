@@ -1,0 +1,58 @@
+set confirm off
+
+define argv
+show args
+end
+document argv
+Print program arguments
+end
+
+define stack
+info stack
+end
+document stack
+Print call stack
+end
+
+define stfr
+info frame
+info args
+info locals
+end
+document stfr
+Print stack frame
+end
+
+# Save history
+set history filename ./.gdb_history
+set history save on
+
+# 记录执行gdb的过程
+set logging file ./.gdblog.txt
+set logging on
+
+# 退出并保留断点
+define qbp
+save breakpoints ./.gdb_bp
+quit
+end
+document qbp
+Exit and save the breakpoint
+end
+
+# 保留历史工作断点
+define bps
+save breakpoints ./.gdb_bp
+end
+document bps
+Save the historical work breakpoint
+end
+
+
+# 加载历史工作断点
+define bpl
+source ./.gdb_bp
+end
+document bpl
+Load the historical work breakpoint
+end

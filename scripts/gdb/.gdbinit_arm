@@ -1,0 +1,71 @@
+echo -----arm-xxx-gdb initialization script-----\n
+
+source ~/work/gconfig/scripts/gdb/.gdbinit_common
+
+# To use the develop version of GEF, add below line
+# source ~/work/repos/gef/gef.py
+# To use the release version of GEF, add below line
+# source ~/.gdbinit-gef.py
+
+# source ~/.gdbinit-gef.py
+
+define mr
+monitor reset
+end
+document mr
+Reset the remote debugging device, no param followed
+Usage:mr
+end
+
+define fill_stack
+  if $argc == 2
+    set $write_addr = $arg0
+    set $fill_value = $arg1
+    printf "Filling stack in range [0x%08x, 0x%08x) with value 0x%08x\n", $write_addr, $sp, $fill_value
+    while $write_addr < $sp
+      set {uint32_t}$write_addr = $fill_value
+      set $write_addr = $write_addr + 4
+    end
+  else
+    printf "Two arguments (write address, fill value) needed!\n"
+  end
+end
+
+define check_stack
+  if $argc == 3
+    set $start_addr = $arg0
+    set $check_value = $arg1
+    set $top_addr = $arg2
+
+    set $check_addr = $start_addr
+    set $unused_count = 0
+    printf "Checking stack in range [0x%08x, 0x%08x) for value 0x%08x\n", $check_addr, $sp, $check_value
+    while $check_addr < $sp
+      if {uint32_t}$check_addr == $check_value
+        set $unused_count = $unused_count + 4
+        set $check_addr = $check_addr + 4
+      else
+        printf "Untouched stack = %u/%u bytes, last untouched word at address 0x%08x\n", $unused_count, $top_addr - $start_addr, $check_addr - 4
+        set $check_addr = $sp
+      end
+    end
+  else
+    printf "Three arguments (start address, fill value, end address) needed!\n"
+  end
+end
+
+define fill_stack_gcc
+  fill_stack stack 0xbeefbeef
+end
+
+define fill_stack_iar
+  fill_stack (uint32_t*)&CSTACK$$Base 0xbeefbeef
+end
+
+define check_stack_gcc
+  check_stack stack 0xbeefbeef (stack+sizeof(stack))
+end
+
+define check_stack_iar
+  check_stack (uint32_t)&CSTACK$$Base 0xbeefbeef (uint32_t)&CSTACK$$Limit
+end

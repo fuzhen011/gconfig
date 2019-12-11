@@ -1,0 +1,16 @@
+# Environment variables - Paths
+
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+plugins=(
+  git 
+  command-not-found 
+  autojump 
+  zsh-autosuggestions 
+  colored-man-pages
+  vundle
+)
+
+export PATH=/usr/lib/arm-linux-gnueabihf/:$PATH
+
+alias cdpro="cd ~/work/projs/"

@@ -1,0 +1,24 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                   --- Vim Runtime Configuration File ---                   "
+"                   ---       Doxygen Tool Kit         ---                   "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:DoxygenToolkit_commnetType = "c"
+let g:DoxygenToolkit_briefTag_pre = "@brief\t"
+let g:DoxygenToolkit_briefTag_funcName = "yes"
+let g:DoxygenToolkit_briefTag_post = ""
+
+let g:DoxygenToolkit_templateParamTag_pre = "@tparam\t"
+let g:DoxygenToolkit_paramTag_pre = "@param\t"
+let g:DoxygenToolkit_paramTag_post = " - "
+
+let g:DoxygenToolkit_returnTag = "@return\t"
+
+let g:DoxygenToolkit_blockTag = "@defgroup "
+
+let g:DoxygenToolkit_authorName="zhfu"
+"let g:DoxygenToolkit_licenseTag="My ownlicense\<enter>"
+let g:DoxygenToolkit_undocTag="DOXIGEN_SKIP_BLOCK"
+"这个是指, 是否在注释中 自动 包含函数名称
+let g:DoxygenToolkit_maxFunctionProtoLines = 30
+nnoremap <leader>df :Dox<CR>
+nnoremap <leader>db :DoxBlock<CR>

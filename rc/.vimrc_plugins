@@ -1,0 +1,90 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                   --- Vim Runtime Configuration File ---                   "
+"                   ---             Plugins            ---                   "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+"设置Vundle的运行路径并初始化
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+"Vundle对自己的调用，不可删去
+Plugin 'VundleVim/Vundle.vim'
+
+" Below are the different formats of plugins, put them between 'call vundle#begin()' and 'call vundle#end()'
+" <1> If the plugin is from "Vim-scripts", only need the plugin name
+" <2> If the plugin is from GitHub, only need the account/script-name
+" <3> If the plugin doesn't live in GitHub, the clone address is required.
+"
+" YCM, needless to say
+Plugin 'Valloric/YouCompleteMe'
+" ALE, needless to say
+Plugin 'w0rp/ale'
+" Ctrl P, needless to say
+Plugin 'kien/ctrlp.vim'
+" Fast commenting tool for most of the file types
+Plugin 'scrooloose/nerdcommenter'
+" Showing tags (functions, variables macros etc.), e.g. map to F4
+Plugin 'taglist.vim'
+" Showing the files in a tree, e.g. map to F3
+Plugin 'scrooloose/nerdtree'				  " 在NERDTree上显示文件或文件夹的git状态
+" For generating the Doxygen code comment.
+Plugin 'DoxygenToolkit.vim'
+" Airline status bar, could dig more?
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+" Git wrapper for Vim, run many git commands in Vim, TODO: if it's really useful
+" for me
+Plugin 'tpope/vim-fugitive'					  " 显示当前git分支到状态栏
+" visually select increasingly larger regions of text using the same key
+" combination. e.g. map to 'v'
+Plugin 'terryma/vim-expand-region'
+" This plugin is used for displaying thin vertical lines at each indentation
+" level for code indented with spaces.
+Plugin 'Yggdroot/indentLine'
+" Use [ag if exists] ack search for key word
+Plugin 'mileszs/ack.vim'
+" 自动生成tags
+Plugin 'ludovicchabant/vim-gutentags'
+" TODO: Try to remove below 2 plugins with XXX.vim
+Plugin 'LucHermitte/lh-vim-lib'
+Plugin 'LucHermitte/local_vimrc'
+
+" TODO: 补全 python, seems not work, need to figure out
+Plugin 'davidhalter/jedi-vim'
+Plugin 'tell-k/vim-autopep8'
+Plugin 'rkulla/pydiction'
+
+" Markdown Alagning text and syntastic
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'iamcco/markdown-preview.vim'
+" Plugin 'iamcco/markdown-preview.nvim'
+
+" Deprecated plugins with reason
+" - Alternative is 'ack.vim'
+" Plugin 'EasyGrep'
+" - Alternative is 'ack.vim'
+" Plugin 'wsdjeg/FlyGrep.vim'
+"
+" Potential good plugins for the future
+" - Syntax file for the Groovy programming language. It relies on the java.vim syntax file.
+" Plugin 'groovy.vim'
+" - Showing git info on nerdtree
+" Plugin 'Xuyuanp/nerdtree-git-plugin'
+"
+" Plugin 'git://git.wincent.com/command-t.git'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+filetype plugin on
+
+"打开文件类型检测, 加了这句才可以用智能补全
+set completeopt=longest,menu
+" 安装插件的相关指令
+":PluginList			- 列出已安装插件
+":PluginInstall			- 安装新添加的插件;添加`!`或使用`:PluginUpdate`来更新已安装插件
+":PluginSearch xxx		- 寻找名字带有xxx的插件;添加`!`刷新本地缓存
+":PluginClean			- 删除已经从列表移除的插件;添加`!`静默卸载
+":h						- 帮助和说明文档
+"Vundle的设置到此为止了

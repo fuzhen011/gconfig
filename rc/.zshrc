@@ -5,27 +5,26 @@ pc_name=$(hostname)
 os_name=$(uname -v)
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/zhfu/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 if [[ $os_name =~ 'Ubuntu' ]];then
-	echo "Current platform is ***Ubuntu*** --- \c"
+    echo "Current platform is ***Ubuntu***"
     source ~/.kevin_zsh/.zshrc_ubuntu_7480
 elif [[ $os_name =~ 'Microsoft' ]];then
-	echo "Current platform is ***WSL*** --- \c"
-	source ~/.kevin_zsh/.zshrc_wsl
-elif [[ $pc_name =~ 'raspberry' ]];then
-	echo "Current platform is ***Raspberry PI*** --- \c"
-	# Path to your oh-my-zsh installation.
-  	export ZSH="/home/pi/.oh-my-zsh"
-	source ~/.kevin_zsh/.zshrc_pi
+    echo "Current platform is ***WSL***"
+    source ~/.kevin_zsh/.zshrc_wsl
+elif [[ $pc_name =~ 'zhfu-pi' ]];then
+    echo "Current platform is ***Raspberry PI***"
+    # Path to your oh-my-zsh installation.
+      # export ZSH="/home/pi/.oh-my-zsh"
+    source ~/.kevin_zsh/.zshrc_pi
 elif [[ $os_name =~ 'Darwin' ]];then
-	echo "Current platform is ***MacOS*** --- \c"
-	source ~/.kevin_zsh/.zshrc_mac
+    echo "Current platform is ***MacOS***"
+    source ~/.kevin_zsh/.zshrc_mac
 else
-	echo "Current platform is ***MacOS*** --- \c"
-	source ~/.kevin_zsh/.zshrc_ubuntu_pc
+    echo "Current platform is ***MSYS2***"
+    source ~/.kevin_zsh/.zshrc_msys2
 fi
-source /usr/local/Cellar/zsh-syntax-highlighting/0.6.0/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -36,7 +35,7 @@ ZSH_THEME="ys"
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
 # If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" "ys" "avit")
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -49,7 +48,7 @@ ZSH_THEME="ys"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -90,14 +89,6 @@ ZSH_THEME="ys"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git 
-  command-not-found 
-  autojump 
-  zsh-autosuggestions
-  colored-man-pages
-  vundle
-)
 # Possiblely useful plugins
 # jira jsontools
 # 
@@ -181,5 +172,3 @@ alias tkss='tmux kill-session -t'
 # -------------------------------------------------------------------
 # OTHER aliases
 # -------------------------------------------------------------------
-alias g++='/usr/local/Cellar/gcc/9.2.0_1/bin/g++-9'
-alias c++='/usr/local/Cellar/gcc/9.2.0_1/bin/g++-9'

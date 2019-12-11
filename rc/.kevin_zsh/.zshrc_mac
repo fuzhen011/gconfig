@@ -1,0 +1,73 @@
+# Environment variables - Paths
+source /usr/local/Cellar/zsh-syntax-highlighting/0.7.1/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/local/Cellar/zsh-autosuggestions/0.6.4/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+plugins=(
+  git 
+  command-not-found 
+  autojump 
+  zsh-autosuggestions 
+  colored-man-pages
+  vundle
+)
+
+pdf_tool="/Applications/Foxit\ Reader.app/Contents/MacOS/Foxit\ Reader"
+# Silicon Labs Internal Only Paths
+export SUPER_DIR=$HOME/work/super
+export PYBGAPI_DIR=$HOME/work/pybgapi
+export UNCRUSTIFY_CHECK_SCRIPT=${SUPER_DIR}/tool/script/uncrustify/uncrustifyCheck.py
+export META_UTIL_PATH=${SUPER_DIR}
+export SCRIPT_DIR=${SUPER_DIR}/protocol/bluetooth/scripts
+
+export PATH_OPENSSL="/usr/local/opt/openssl":"/usr/local/opt/openssl/lib"
+export PATH_GCC_="/usr/local/Cellar/gcc/10.1.0/bin/"
+export PATH_MY_SCRIPT="$HOME/work/gconfig/scripts"
+export PATH_BINUTILS="/usr/local/opt/binutils/bin"
+export PATH_PYBIN="/usr/local/Cellar/openssl@1.1/1.1.1d/bin":"$HOME/Library/Python/2.7/bin"
+export PATH_CTAGS="/usr/local/Cellar/ctags/5.8_1/bin"
+
+# Silicon Labs Simplicity Studio Paths
+export PATH_UC_CLI="$HOME/work/repos/uc_cli"
+export PATH_STUDIO="/Applications/Simplicity Studio.app/Contents/Eclipse/"
+export PATH_ARMGCC="$HOME/work/toolchains/7.2_2017q4/bin"
+export ARM_GCC_DIR="$HOME/work/toolchains/7.2_2017q4"
+export PATH_COMMANDER="$PATH_STUDIO/developer/adapter_packs/commander/Commander.app/Contents/MacOS"
+export PATH_PYBGAPI="$HOME/work/repos/py_bgapi/pybgapi"
+export STUDIO_WORKSPACE="$HOME/SimplicityStudio"
+# export PATH_ARMGCC="$PATH_STUDIO/developer/toolchains/gnu_arm/7.2_2017q4/bin"
+#
+export PATH=$PATH_ARMGCC:$PATH_CTAGS:$PATH_PYBGAPI:$PATH_OPENSSL:$OPENSSL_LIB:$PATH_STUDIO:$PATH_GCC_:$PATH_COMMANDER:$PATH_PYBIN:$PATH_MY_SCRIPT:$PATH_BINUTILS:$PATH_UC_CLI:$PATH
+export PYTHONPATH=$PATH_PYBGAPI:$PYTHONPATH
+
+export PATH_BLE_SDK="/Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v2.7/app/bluetooth"
+export PATH_BTMESH_SDK="/Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/blemesh/v1.7/app/bluetooth"
+
+# Alias
+alias agr="alias | grep"
+alias cdncp="cd $SUPER_DIR/protocol/bluetooth/apps/ncp_mesh"
+# In macOS, it's recommended to use open directly.
+alias nau="open ."
+alias nam="nohup open $PATH_BTMESH_SDK/doc >/dev/null 2>&1 &"
+alias nab="nohup open $PATH_BLE_SDK/doc >/dev/null 2>&1 &"
+alias cdmdoc="cd $PATH_BTMESH_SDK/doc"
+alias cdbdoc="cd $PATH_BLE_SDK/doc"
+alias bapi="nohup $pdf_tool $PATH_BLE_SDK/doc/bluetooth-api-reference.pdf >/dev/null 2>&1 &"
+alias mapi="nohup $pdf_tool $PATH_BTMESH_SDK/doc/bluetooth-le-and-mesh-software-api-reference-manual.pdf >/dev/null 2>&1 &"
+alias cdpro="cd $HOME/work/projs"
+alias cdbm="cd $HOME/work/projs/bt_mesh"
+alias readlink=greadlink
+
+# Documents alias
+alias meshcore="nohup $pdf_tool $HOME/Documents/bluetooth_core_spec/MshPRFv1.0.1.pdf >/dev/null 2>&1 &"
+alias modelcore="nohup $pdf_tool $HOME/Documents/bluetooth_core_spec/MshMDLv1.0.1.pdf >/dev/null 2>&1 &"
+alias blecore="nohup $pdf_tool $HOME/Documents/bluetooth_core_spec/Core_v5.0.pdf >/dev/null 2>&1 &"
+alias cdfree="cd $HOME/work/projs/freeRTOS"
+alias cdge="cd $HOME/work/projs/general"
+
+alias gcc='/usr/local/bin/gcc-10'
+alias cc='/usr/local/bin/gcc-10'
+alias g++='/usr/local/bin/g++-10'
+alias c++='/usr/local/bin/g++-10'
+alias gdb='sudo gdb -q'
+
+alias symall="$PATH_MY_SCRIPT/../rc/symall.sh"

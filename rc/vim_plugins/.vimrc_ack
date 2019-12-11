@@ -1,0 +1,26 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                   --- Vim Runtime Configuration File ---                   "
+"                   ---             Ack.vim            ---                   "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Use [ag if exists] ack search in non-case-sensitive mode
+if executable('ag')
+	let g:ackprg = 'ag --vimgrep'
+endif
+cnoreabbrev Ack Ack!
+
+function! Find_git_root()
+    return system("git rev-parse --show-toplevel | tr -d '\\n'")
+endfunction
+
+command! -nargs=1 MyAg execute "Ack! -i <args> " . Find_git_root()
+command! -nargs=1 MyAgNoIc execute "Ack! -s <args> " . Find_git_root()
+command! -nargs=1 MyAgWo execute "Ack! -w <args> " . Find_git_root()
+
+nnoremap <Leader>ack :MyAg!<Space>
+" Use [ag if exists] ack search in NORMAL mode
+nnoremap <Leader>aa :norm yiw<CR>:MyAg <C-R>"<CR>
+" Use [ag if exists] ack search in CASE-SENSITIVE mode
+nnoremap <Leader>ac :norm yiw<CR>:MyAgNoIc <C-R>"<CR>
+" Use [ag if exists] ack search in CASE-SENSITIVE and WHOLE-WORD-ONLY mode
+nnoremap <Leader>aw :norm yiw<CR>:MyAgWo <C-R>"<CR>

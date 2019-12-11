@@ -1,0 +1,7 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                   --- Vim Runtime Configuration File ---                   "
+"                   ---        Nerdcommenter.vim       ---                   "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:NERDSpaceDelims = 1
+let g:NERDCustomDelimiters = { 'cpp': { 'left': '/*','right': '*/' } }
+let g:NERDCommentEmptyLines = 1

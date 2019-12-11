@@ -1,0 +1,8 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                   --- Vim Runtime Configuration File ---                   "
+"                   ---          Gutentags             ---                   "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+let g:gutentags_ctags_extra_args = ['-R', '--fields=+l', '--langmap=c:.c.h']
+set statusline+=%{gutentags#statusline()}
+

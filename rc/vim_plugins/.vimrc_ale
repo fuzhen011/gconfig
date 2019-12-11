@@ -1,0 +1,90 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                   --- Vim Runtime Configuration File ---                   "
+"                   ---               ALE              ---                   "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:ale_sign_column_always = 1
+let g:ale_set_highlights = 0
+let g:ale_sign_error = 'E'        "Error Flag on the left
+let g:ale_sign_warning = 'W'      "Warning Flag on the left
+let g:ale_statusline_format = ['✗ %d', '⚡ %d', '✔ OK']
+let g:ale_completion_enabled = 0
+let g:ale_c_parse_compile_commands = 1
+
+" It's good have when developing
+let g:ale_fix_on_save = 0
+let g:ale_fixers = {
+    \ '*' : ['remove_trailing_lines'],
+	\ 'c': ['uncrustify', 'trim_whitespace'],
+    \ 'cpp': ['uncrustify', 'trim_whitespace'],
+    \ 'vim': ['trim_whitespace'],
+    \ 'python': ['autopep8', 'isort', 'trim_whitespace'],
+    \ 'sh': ['shfmt', 'trim_whitespace'],
+    \ 'xml': ['xmllint', 'trim_whitespace'],
+    \ 'json': ['prettier', 'trim_whitespace'],
+    \ 'markdown': ['prettier'],
+    \ 'cmake': ['cmakeformat', 'trim_whitespace']
+    \ }
+" clang is an option for c
+let g:ale_linters = {
+    \ 'python':['pylint'],
+    \ 'c':['gcc'],
+    \ 'cpp':['gcc'],
+\ }
+
+" Only run linters named in ale_linters settings.
+" let g:ale_linters_explicit = 1
+"
+" let g:ale_set_balloons = 1
+
+""" ale-c-options
+let g:ale_c_build_dir_names = ['build', 'GNU ARM v7.2.1 - Default']
+if has("mac")
+let g:ale_c_gcc_executable = '/usr/local/bin/gcc-10'
+let g:ale_cpp_gcc_executable = '/usr/local/bin/g++-10'
+elseif has("win32")
+else
+let g:ale_c_gcc_executable = 'gcc'
+endif
+let g:ale_c_gcc_options = '-std=c99 -Wall'
+let g:ale_lint_on_text_changed = 1
+let g:ale_open_list = 0
+let g:ale_c_uncrustify_options = '-c ~/.uncrustify.cfg -l C --replace'
+"https://github.com/richq/cmake-lint
+let g:ale_cmake_cmakelint_options = '--filter=-linelength'
+nnoremap <leader>af <Plug>(ale_fix)
+nnoremap <leader>ff :w<CR>:ALEFix<CR>
+nnoremap <leader>ar :w<CR>:ALEReset<CR>
+nnoremap <leader>an :ALENextWrap<CR>
+nnoremap <leader>ap :ALEPreviousWrap<CR>
+nnoremap <leader>ad :ALEDetail<CR>
+" nnoremap <silent> <leader>ad <Plug>(ale_detail)
+
+" To work with ARM core project, specify below line >>>
+" let g:ale_c_gcc_executable = 'arm-none-eabi-gcc'
+" let g:ale_cpp_gcc_executable = 'arm-none-eabi-gcc'
+" let g:ale_c_gcc_options = '-g3 -gdwarf-2 -mcpu=cortex-m4 -mthumb -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -std=c99 -ffunction-sections -fdata-sections -Wall'
+" let g:ale_c_clang_options = '-g3 -gdwarf-2 -mcpu=cortex-m4 -mthumb -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -std=c99 -ffunction-sections -fdata-sections -Wall'
+
+""" Dedicated for <<All EFR32 Projects>>
+" let g:ale_c_parse_compile_commands = 1
+" let g:ale_c_clang_options = '-g -gdwarf-2 -mcpu=cortex-m4 -mthumb -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -std=c99 -ffunction-sections -fdata-sections -Wall'
+" let g:ale_c_gcc_executable = 'arm-none-eabi-gcc'
+" let g:ale_c_gcc_options = '-g -gdwarf-2 -mcpu=cortex-m4 -mthumb -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -std=c99 -ffunction-sections -fdata-sections -Wall'
+
+" Dedicated for <<Switch_host>>
+" let g:ale_c_gcc_options = '-O0 -g3 -gdwarf-2 -std=c99 -Wall -I$STUDIO_PATH/developer/sdks/blemesh/v1.4/protocol/bluetooth/bt_mesh/inc -I$STUDIO_PATH/developer/sdks/blemesh/v1.4/protocol/bluetooth/ble_stack/inc/common -I$STUDIO_PATH/developer/sdks/blemesh/v1.4/protocol/bluetooth/ble_stack/inc/host -I./common/uart -I./'
+"
+
+" Dedicated for <<Provisioner>>
+" let g:ale_c_gcc_options = '-D_DEFAULT_SOURCE -D_BSD_SOURCE -I/home/zhfu/work/projs/provisioner/inc -I/home/zhfu/work/projs/provisioner/inc/common -I/usr/local/include/libxml2 -I/home/zhfu/work/projs/provisioner/common/uart -I/home/zhfu/work/projs/provisioner -I/home/zhfu/work/projs/provisioner/utest'
+
+" Dedicated for <<linux_unix_system_programming_manual>>
+" let g:ale_c_gcc_options = '-O0 -g3 -std=c99 -Wall -D_DEFAULT_SOURCE -D_BSD_SOURCE -I/home/zhfu/work/projs/books/linux_unix_system_programming_manual/common -I/home/zhfu/work/projs/books/linux_unix_system_programming_manual'
+
+" Dedicated for <<ds>>
+" let g:ale_c_gcc_options = '-std=c99 -Wall -D_DEFAULT_SOURCE -D_BSD_SOURCE -I/home/zhfu/work/projs/ds/inc -I/home/zhfu/work/projs/ds'
+
+" Dedicated for <<bt_mesh>>
+" let g:ale_c_gcc_options = '-DEFR32BG13P632F512GM48=1 -DUSE_MBEDTLS=1 -Dapi_fun="" -Dinternal="" -I/home/zhfu/work/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/bluetooth/ble_stack/inc/soc -I/home/zhfu/work/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/Device/SiliconLabs/EFR32BG13P/Include -I/home/zhfu/work/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/CMSIS/Include -I/home/zhfu/work/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/util/silicon_labs/silabs_core/memory_manager -I/home/zhfu/work/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/util/third_party/mbedtls/include -I/home/zhfu/work/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/util/third_party/mbedtls/sl_crypto/include -I/home/zhfu/work/projs/bt_mesh/inc -I/home/zhfu/work/projs/bt_mesh/src -I/home/zhfu/work/projs/bt_mesh/src/friendship -I/home/zhfu/work/projs/bt_mesh/src/platform -I/home/zhfu/work/projs/bt_mesh/src/ddb -I/home/zhfu/work/projs/bt_mesh/src/common -I/home/zhfu/work/projs/bt_mesh/src/networking -I/home/zhfu/work/projs/bt_mesh/src/provisioning -I/home/zhfu/work/projs/bt_mesh/src/networking/network_management -I/home/zhfu/work/projs/bt_mesh/src/networking/beacons -I/home/zhfu/work/projs/bt_mesh/src/models -I/home/zhfu/work/projs/bt_mesh/src/models/sig_models -I/home/zhfu/work/projs/bt_mesh/src/models/vendor_models -I/home/zhfu/work/projs/bt_mesh/src/models/foundation -I/home/zhfu/work/projs/bt_mesh/src/utils -I/home/zhfu/work/projs/bt_mesh/src/security  -mcpu=cortex-m4 -mthumb -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -g3 -std=c99 -ffunction-sections -fdata-sections -Wall -Wno-unknown-pragmas -Wno-misleading-indentation -Wno-strict-aliasing -Wno-error=unused-variable  -O0 -g3 -DDEBUG=1'
+" let g:ale_cpp_gcc_options = '-DEFR32BG13P632F512GM48=1 -DUSE_MBEDTLS=1 -Dapi_fun="" -Dinternal="" -I/home/zhfu/work/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/bluetooth/ble_stack/inc/soc -I/home/zhfu/work/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/Device/SiliconLabs/EFR32BG13P/Include -I/home/zhfu/work/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/CMSIS/Include -I/home/zhfu/work/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/util/silicon_labs/silabs_core/memory_manager -I/home/zhfu/work/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/util/third_party/mbedtls/include -I/home/zhfu/work/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/util/third_party/mbedtls/sl_crypto/include -I/home/zhfu/work/projs/bt_mesh/inc -I/home/zhfu/work/projs/bt_mesh/src -I/home/zhfu/work/projs/bt_mesh/src/friendship -I/home/zhfu/work/projs/bt_mesh/src/platform -I/home/zhfu/work/projs/bt_mesh/src/ddb -I/home/zhfu/work/projs/bt_mesh/src/common -I/home/zhfu/work/projs/bt_mesh/src/networking -I/home/zhfu/work/projs/bt_mesh/src/provisioning -I/home/zhfu/work/projs/bt_mesh/src/networking/network_management -I/home/zhfu/work/projs/bt_mesh/src/networking/beacons -I/home/zhfu/work/projs/bt_mesh/src/models -I/home/zhfu/work/projs/bt_mesh/src/models/sig_models -I/home/zhfu/work/projs/bt_mesh/src/models/vendor_models -I/home/zhfu/work/projs/bt_mesh/src/models/foundation -I/home/zhfu/work/projs/bt_mesh/src/utils -I/home/zhfu/work/projs/bt_mesh/src/security  -mcpu=cortex-m4 -mthumb -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -g3 -std=c99 -ffunction-sections -fdata-sections -Wall -Wno-unknown-pragmas -Wno-misleading-indentation -Wno-strict-aliasing -Wno-error=unused-variable  -O0 -g3 -DDEBUG=1'

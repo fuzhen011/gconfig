@@ -1,0 +1,59 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                   --- Vim Runtime Configuration File ---                   "
+"                   ---          Key Mappings          ---                   "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+nnoremap <leader>lo :lopen<CR>	"open locationlist
+nnoremap <leader>lc :lclose<CR>	"close locationlist
+nnoremap <leader>qo :copen<CR>	"open QuickFix
+nnoremap <leader>qc :cclose<CR>	"close QuickFix
+
+noremap <Leader>re :norm yiw<CR>:%s/<C-R>"/
+noremap <Leader>f0 o#if 0<ESC>
+noremap <Leader>fe o#endif<ESC>
+
+noremap <C-l>	<C-w>l
+noremap <C-h>	<C-w>h
+noremap <C-j>	<C-w>j
+noremap <C-k>	<C-w>k
+
+nnoremap <silent> <leader>am I[comment]: # ""<ESC>i
+nnoremap <silent> <leader>dp I/******************************************************************<CR><CR>***************************************************************/<ESC>ka<SPACE>
+nnoremap <silent> <leader>de I/*  */<ESC>2hi**Delimiter** ---
+
+"设置切换Buffer快捷键"
+nnoremap <silent> <ESC>c :bd<CR>
+nnoremap <silent> <ESC>q :bp<CR>
+nnoremap <silent> <ESC>e :bn<CR>
+nnoremap <silent> <ESC>n :new<CR>
+nnoremap <silent> <ESC>t :tabnew<CR>
+nnoremap <silent> <ESC>o :tabp<CR>
+nnoremap <silent> <ESC>p :tabn<CR>
+nnoremap <silent> <ESC>1 :b1<CR>
+nnoremap <silent> <ESC>2 :b2<CR>
+nnoremap <silent> <ESC>3 :b3<CR>
+nnoremap <silent> <ESC>4 :b4<CR>
+nnoremap <silent> <ESC>5 :b5<CR>
+nnoremap <silent> <ESC>6 :b6<CR>
+nnoremap <silent> <ESC>7 :b7<CR>
+nnoremap <silent> <ESC>8 :b8<CR>
+nnoremap <silent> <ESC>9 :b9<CR>
+nnoremap <silent> <ESC>0 :b10<CR>
+
+nnoremap <leader>w :w<CR>
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
+" vp doesn't replace paste buffer
+function! RestoreRegister()
+    let @" = s:restore_reg
+    return ''
+endfunction
+function! s:Repl()
+    let s:restore_reg = @"
+    return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()
+

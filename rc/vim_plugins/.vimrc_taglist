@@ -1,0 +1,39 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                   --- Vim Runtime Configuration File ---                   "
+"                   ---            Taglist             ---                   "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let Tlist_Sort_Type = "name"
+let Tlist_Use_Right_Window = 1
+let Tlist_Compart_Format = 1
+let Tlist_Exist_OnlyWindow = 1
+let Tlist_File_Fold_Auto_Close = 0
+let Tlist_Enable_Fold_Column = 0
+"let Tlist_Show_One_File=1            "不同时显示多个文件的tag，只显示当前文件的
+""设置tags
+" Below 2 lines make vim to search for tags recursively to the parents folder
+set autochdir
+set tags=tags;
+noremap <leader>ct :!ctags -R --fields=+l --langmap=c:.c.h<CR>
+"set autochdir
+"""默认打开Taglist
+""let Tlist_Auto_Open=1
+"""""""""""""""""""""""""""""""
+"" Tag list (ctags)
+"""""""""""""""""""""""""""""""""
+map <F4> :TlistToggle<CR>
+map <silent> <ESC>l :TlistToggle<CR>
+
+if has("mac")
+let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
+elseif has("win32")
+else
+let Tlist_Ctags_Cmd = '/usr/bin/ctags'
+endif
+let Tlist_Show_One_File = 1 "不同时显示多个文件的tag，只显示当前文件的
+let Tlist_Exit_OnlyWindow = 1 "如果taglist窗口是最后一个窗口，则退出vim
+let Tlist_Use_Right_Window = 1 "在右侧窗口中显示taglist窗口
+" minibufexpl插件的一般设置
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1

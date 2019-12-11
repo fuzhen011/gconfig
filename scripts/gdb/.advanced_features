@@ -1,0 +1,36 @@
+# Dynamic GDB prints
+
+# dprint [location] [format] [...]
+# e.g. dprintf RTCC_Enable "RTCC_Enable called with enable parameter value %d\n", enable
+
+
+# Put this script into file and load it in gdb with source command
+ 
+ 
+# Define python function to measure c function execution time.
+# Please note that calling RAIL_GetTime() takes some time and
+# therefore causes some inaccuracies to measurement and may
+# cause also side effects to running application
+define measure_function_execution_time
+  # get current RAIL time and set it to $time1 variable
+  set $time1 = (uint32_t)RAIL_GetTime()
+      printf "function started at %d\n", $time1
+        # wait for function to finish
+        finish
+          # get current RAIL time and set it to $time2 variable
+          set $time2 = (uint32_t)RAIL_GetTime()
+      printf "function finished at %d\n", $time2
+        # print execution time of function in microseconds
+        set $time = $time2 - $time1
+          printf "function execution time was %d us\n", $time
+          end
+           
+           
+# add break point to gecko_peek_event function and measure function execution time
+          break gecko_peek_event
+          commands
+            # call python function defined above
+            measure_function_execution_time
+              # continue gdb
+              continue
+              end

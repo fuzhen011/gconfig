@@ -1,0 +1,30 @@
+# Environment variables - Paths
+
+source $HOME/.kevin_zsh/.zshrc_common
+plugins=(
+  git 
+  command-not-found 
+  autojump 
+  zsh-autosuggestions 
+  colored-man-pages
+  vundle
+)
+export GLIB_PATH=/usr/include/glib-2.0
+export SUPER_DIR=$HOME/work/super
+export PYBGAPI_DIR=$HOME/work/pybgapi
+export UNCRUSTIFY_CHECK_SCRIPT=${SUPER_DIR}/tool/script/uncrustify/uncrustifyCheck.py
+export META_UTIL_PATH=${SUPER_DIR}
+export SCRIPT_DIR=${SUPER_DIR}/protocol/bluetooth/scripts
+# export PYEMDLL_DIR=$HOME/work/repos/pyemdll
+export PYTHONPATH=$PYTHONPATH:$PYBGAPI_DIR
+export PATH=$PATH:$SUPER_DIR:$PYBGAPI_DIR:$SCRIPT_DIR:$UNCRUSTIFY_CHECK_SCRIPT:$META_UTIL_PATH:$PYTHONPATH:$GLIB_PATH
+
+# Alias
+alias cdncp="cd $SUPER_DIR/protocol/bluetooth/apps/ncp_mesh"
+alias cdfree="cd $HOME/work/projs/freeRTOS"
+alias meshcore="nohup $pdf_tool $HOME/Documents/bluetooth_core_spec/MshPRFv1.0.1.pdf >/dev/null 2>&1 &"
+alias modelcore="nohup $pdf_tool $HOME/Documents/bluetooth_core_spec/MshMDLv1.0.1.pdf >/dev/null 2>&1 &"
+alias blecore="nohup $pdf_tool $HOME/Documents/bluetooth_core_spec/Core_v5.1.pdf >/dev/null 2>&1 &"
+alias cdcore="cd $HOME/Documents/bluetooth_core_spec"
+
+alias symall="$MY_SCRIPT_DIR/../rc/symall.sh"

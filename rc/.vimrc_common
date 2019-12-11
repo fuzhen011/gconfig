@@ -1,0 +1,155 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                   --- Vim Runtime Configuration File ---                   "
+"                   ---             Common             ---                   "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"----------------------------------------Register-Start-------------------------------------------
+set path=.,/usr/include,/usr/local/include,,
+set nu                   "显示行号
+set clipboard=unnamed    "使用y命令未指定寄存器会存到"0寄存器中，同时""会与该寄存器保有同样的值
+set tabstop=4            "默认Tab移动的空格数
+set shiftwidth=4         "换行时的自动缩进列数 + 行选择后，使用 < 或者 > 做缩进时，缩进的列数
+set smarttab             "根据文件中其他地方的缩进空格个数来确定一个 tab 是多少个空格
+set expandtab            "强制使用空格代替Tab
+set autoindent           "使能自动缩进
+set cindent              "Vim可以很好的识别出C和Java等结构化程序设计语言，并且能用C语言的缩进格式来处理程序的缩进结构。
+"set smartindent
+set hlsearch             "搜索高亮
+set incsearch            "渐进式搜索
+syntax on                "语法高亮
+"set mouse-=a to disable mouse
+"set mouse=a
+set backspace=2
+set history=1000         "历史记录数
+set whichwrap=<,>,[,]    "当光标在行尾时，允许左右键换行
+set laststatus=2         "总是显示状态栏
+set modifiable
+set fileformat=unix      "按Unix文件格式保存(/r/n vs /n)
+" set cuc                "高亮当前列
+set cul                  "高亮当前行
+set showcmd              "q:查看输入命令
+set autoread             "打开文件监视。如果在编辑过程中文件发生外部改变，就会发出提示。
+set autowrite            "设定自动保存，当你编辑下一个文件的时候，目前正在编辑的文件如果改动，将会自动保存
+set ruler                "显示标尺
+
+" 使能折叠
+set foldenable
+set foldmethod=indent
+set foldlevel=99
+" 使用中文帮助
+set helplang=cn
+set langmenu=zh_CN.UTF-8
+
+set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
+set termencoding=utf-8
+set encoding=utf-8
+set fileencodings=ucs-bom,utf-8,cp936
+set fileencoding=utf-8
+set background=dark
+set t_Co=256
+"set term=xterm-256color
+"
+autocmd BufNewFile,BufRead *.xml,*cmake,CMakeLists.txt set tabstop=2 shiftwidth=2
+autocmd BufNewFile,BufRead *.cpp,*.c,*.h set tabstop=2 shiftwidth=2 tw=80 fo+=Mm
+
+"----------------------------------------Register-End-------------------------------------------
+"
+" Header for XML file creation
+autocmd BufNewFile *.xml exec ":call Setxmltitle()"
+func! Setxmltitle()
+	if &filetype == 'xml'
+		call setline(1, "<\?xml version=\"1.0\" encoding=\"utf-8\"\?>")
+	endif
+	autocmd BufNewFile * normal G
+endfunc
+
+autocmd BufNewFile *.[ch],*.hpp,*.cpp,makefile,Makefile,*.mk,*.sh,*.py exec ":call SetTitle()"
+func! SetPythonTitle()
+	call setline(1,"#!/usr/bin/env python")
+	call append( line("."),"#-*- coding: utf-8 -*-" )
+	call append(line(".")+1," ")
+	call append(line(".")+2, "\# File Name: ".expand("%"))
+	call append(line(".")+3, "\# Author: Kevin")
+	call append(line(".")+4, "\# Created Time: ".strftime("%Y-%m-%d",localtime()))
+	call append(line(".")+5, "\# Description: ")
+	autocmd BufNewFile * normal G
+endfunc
+
+func! SetComment()
+	call setline(1, "/*************************************************************************")
+	call append(line("."), "    > File Name: ".expand("%"))
+	call append(line(".")+1, "    > Author: Kevin")
+	call append(line(".")+2, "    > Created Time: ".strftime("%Y-%m-%d",localtime()))
+	call append(line(".")+3, "    > Description: ")
+	call append(line(".")+4, " ************************************************************************/")
+	call append(line(".")+5, "")
+endfunc
+
+func! SetComment_sh()
+	call setline(3, "# **********************************************************************")
+	call setline(4, "")
+endfunc
+
+func! SetTitle()
+	if &filetype == 'make'
+	elseif &filetype == 'python'
+		call SetPythonTitle()
+	elseif &filetype == 'sh'
+		call setline(1,"#!/bin/bash")
+	else
+		call SetComment()
+		if expand("%:e") == 'h'
+			call append(line(".")+6, "#ifndef ".toupper(expand("%:t:r"))."_H")
+			call append(line(".")+7, "#define ".toupper(expand("%:t:r"))."_H")
+			call append(line(".")+8, "#ifdef __cplusplus")
+			call append(line(".")+9, "extern \"C\"")
+			call append(line(".")+10, "{")
+			call append(line(".")+11, "#endif")
+			call append(line(".")+12, "")
+			call append(line(".")+13, "#ifdef __cplusplus")
+			call append(line(".")+14, "}")
+			call append(line(".")+15, "#endif")
+			call append(line(".")+16, "#endif //".toupper(expand("%:t:r"))."_H")
+		elseif &filetype == 'c'
+			call append(line(".")+6, "/* Includes *********************************************************** */")
+			call append(line(".")+7,"#include \"".expand("%:t:r").".h\"")
+			call append(line(".")+8, "")
+			call append(line(".")+9, "/* Defines  *********************************************************** */")
+			call append(line(".")+10, "")
+			call append(line(".")+11, "/* Global Variables *************************************************** */")
+			call append(line(".")+12, "")
+			call append(line(".")+13, "/* Static Variables *************************************************** */")
+			call append(line(".")+14, "")
+			call append(line(".")+15, "/* Static Functions Declaractions ************************************* */")
+			call append(line(".")+16, "")
+		elseif &filetype == 'cpp'
+			call append(line(".")+6, "#include \"".expand("%:t:r").".h\"")
+		endif
+	endif
+endfunc
+
+set makeprg =make\ all
+" nnoremap <F7> :ALEFix<CR> :w<CR> :make<CR>
+nnoremap <F7> :call CompileCode()<CR>
+inoremap <F7> <ESC>:call CompileCode()<CR>
+vnoremap <F7> <ESC>:call CompileCode()<CR>
+
+func! CompileCode()
+	exec "echo &filetype"
+	if &filetype == "c"
+		exec "ALEFix"
+		exec "wa"
+		exec "make"
+	elseif &filetype == "python"
+        exec "ALEFix"
+        exec "w"
+		exec "call RunPython()"
+	endif
+endfunc
+
+func! RunPython()
+	exec "W"
+	if &filetype == 'python'
+		exec "!python2.7 %"
+	endif
+endfunc
