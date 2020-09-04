@@ -57,3 +57,22 @@ function! s:Repl()
 endfunction
 vmap <silent> <expr> p <sid>Repl()
 
+" Enter License
+"
+"
+"
+let g:silabs_license = "Copyright (C) \<enter>\<enter>"
+let g:silabs_license = g:silabs_license . "This program is free software; you can redistribute it and/or\<enter>"
+let g:silabs_license = g:silabs_license . "modify it under the terms of the GNU General Public License\<enter>"
+let g:silabs_license = g:silabs_license . "as published by the Free Software Foundation; either version 2\<enter>"
+let g:silabs_license = g:silabs_license . "of the License, or (at your option) any later version.\<enter>\<enter>"
+let g:silabs_license = g:silabs_license . "This program is distributed in the hope that it will be useful,\<enter>"
+let g:silabs_license = g:silabs_license . "but WITHOUT ANY WARRANTY; without even the implied warranty of\<enter>"
+let g:silabs_license = g:silabs_license . "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\<enter>"
+let g:silabs_license = g:silabs_license . "GNU General Public License for more details.\<enter>\<enter>"
+let g:silabs_license = g:silabs_license . "You should have received a copy of the GNU General Public License\<enter>"
+let g:silabs_license = g:silabs_license . "along with this program; if not, write to the Free Software\<enter>"
+let g:silabs_license = g:silabs_license . "Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.\<enter>"
+
+" function! test_license()
+" endfunction
