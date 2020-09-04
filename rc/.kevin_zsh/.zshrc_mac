@@ -25,6 +25,7 @@ export PATH_MY_SCRIPT="$HOME/work/gconfig/scripts"
 export PATH_BINUTILS="/usr/local/opt/binutils/bin"
 export PATH_PYBIN="/usr/local/Cellar/openssl@1.1/1.1.1d/bin":"$HOME/Library/Python/2.7/bin"
 export PATH_CTAGS="/usr/local/Cellar/ctags/5.8_1/bin"
+export PATH_DOCXGEN="/Applications/Doxygen.app/Contents/Resources"
 
 # Silicon Labs Simplicity Studio Paths
 export PATH_UC_CLI="$HOME/work/repos/uc_cli"
@@ -36,7 +37,7 @@ export PATH_PYBGAPI="$HOME/work/repos/py_bgapi/pybgapi"
 export STUDIO_WORKSPACE="$HOME/SimplicityStudio"
 # export PATH_ARMGCC="$PATH_STUDIO/developer/toolchains/gnu_arm/7.2_2017q4/bin"
 #
-export PATH=$PATH_ARMGCC:$PATH_CTAGS:$PATH_PYBGAPI:$PATH_OPENSSL:$OPENSSL_LIB:$PATH_STUDIO:$PATH_GCC_:$PATH_COMMANDER:$PATH_PYBIN:$PATH_MY_SCRIPT:$PATH_BINUTILS:$PATH_UC_CLI:$PATH
+export PATH=$PATH_DOCXGEN:$PATH_ARMGCC:$PATH_CTAGS:$PATH_PYBGAPI:$PATH_OPENSSL:$OPENSSL_LIB:$PATH_STUDIO:$PATH_GCC_:$PATH_COMMANDER:$PATH_PYBIN:$PATH_MY_SCRIPT:$PATH_BINUTILS:$PATH_UC_CLI:$PATH
 export PYTHONPATH=$PATH_PYBGAPI:$PYTHONPATH
 
 export PATH_BLE_SDK="/Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v2.7/app/bluetooth"
