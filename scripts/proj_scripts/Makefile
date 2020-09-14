@@ -9,4 +9,10 @@ flags:
 clean:
 	make -C $(build) clean && rm -rf compile_commands.json
 
-.PHONY: all clean
+update:
+	rm -rf $(build)/app.o $(build)/*.axf && make -C $(build) -j12 all
+
+rebuild:
+	$(MAKE) clean && $(MAKE) all
+
+.PHONY: all clean flags update rebuild

@@ -8,7 +8,7 @@
 
 import sys
 import os
-import shutil
+#  import shutil
 
 BUILD_DIR = os.getcwd() + "/GNU ARM v7.2.1 - Default"
 
