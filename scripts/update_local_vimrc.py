@@ -19,9 +19,9 @@ build_folders = [
 ]
 
 vimrc_content = [
-    "let g:ale_c_gcc_executable = 'arm-none-eabi-gcc'\n",
-    "let g:ale_cpp_gcc_executable = 'arm-none-eabi-gcc'\n",
-    "let g:ale_c_gcc_options = "
+    "let g:ale_c_cc_executable = 'arm-none-eabi-gcc'\n",
+    "let g:ale_cpp_cc_executable = 'arm-none-eabi-gcc'\n",
+    "let g:ale_c_cc_options = "
 ]
 
 
