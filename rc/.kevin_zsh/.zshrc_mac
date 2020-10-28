@@ -23,7 +23,7 @@ export PATH_OPENSSL="/usr/local/opt/openssl":"/usr/local/opt/openssl/lib"
 export PATH_GCC_="/usr/local/Cellar/gcc/10.1.0/bin/"
 export PATH_MY_SCRIPT="$HOME/work/gconfig/scripts"
 export PATH_BINUTILS="/usr/local/opt/binutils/bin"
-export PATH_PYBIN="/usr/local/Cellar/openssl@1.1/1.1.1d/bin":"$HOME/Library/Python/2.7/bin"
+export PATH_PYBIN="/usr/local/Cellar/openssl@1.1/1.1.1d/bin":"$HOME/Library/Python/2.7/bin":"$HOME/Library/Python/3.9/bin"
 export PATH_CTAGS="/usr/local/Cellar/ctags/5.8_1/bin"
 export PATH_DOCXGEN="/Applications/Doxygen.app/Contents/Resources"
 
@@ -38,13 +38,19 @@ export PATH_PYBGAPI="$HOME/work/repos/py_bgapi/pybgapi"
 export STUDIO_WORKSPACE="$HOME/SimplicityStudio"
 # export PATH_ARMGCC="$PATH_STUDIO/developer/toolchains/gnu_arm/7.2_2017q4/bin"
 #
+# export PATH_NORDIC_TOOLS="/Applications/Nordic\ Semiconductor/nrfprog"
 #
 # Zephyr Environment Variables
+export ZEPHYR_BASE="$HOME/work/repos/zephyrproject/zephyr"
 export ZEPHYR_TOOLCHAIN_VARIANT="gnuarmemb"
 export GNUARMEMB_TOOLCHAIN_PATH=$ARM_GCC_DIR
 
+# export PATH_PY27="/usr/local/lib/python2.7/site-packages"
+export PATH_PY39="/usr/local/lib/python3.9/site-packages"
+# 
 export PATH=$PATH_SUP_TOOLS:$PATH_DOCXGEN:$PATH_ARMGCC:$PATH_CTAGS:$PATH_PYBGAPI:$PATH_OPENSSL:$OPENSSL_LIB:$PATH_STUDIO:$PATH_GCC_:$PATH_COMMANDER:$PATH_PYBIN:$PATH_MY_SCRIPT:$PATH_BINUTILS:$PATH_UC_CLI:$PATH
-export PYTHONPATH=$PATH_PYBGAPI:$PYTHONPATH
+
+export PYTHONPATH=$PATH_PYBGAPI
 
 export PATH_BLE_SDK="/Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v2.7/app/bluetooth"
 export PATH_BTMESH_SDK="/Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/blemesh/v1.7/app/bluetooth"
@@ -78,3 +84,4 @@ alias c++='/usr/local/bin/g++-10'
 alias gdb='sudo gdb -q'
 
 alias symall="$PATH_MY_SCRIPT/../rc/symall.sh"
+alias pytho3='/usr/local/bin/python3'
