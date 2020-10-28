@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sn=68000009
+sn=30000299
 cmd_jlink=JLinkExe
 dev=STM32F103CB
 port=8351

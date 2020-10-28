@@ -15,7 +15,7 @@ gdbsv_log_path=$sh_path/log/$JLinkGDBServer_log_file
 
 dev=STM32F103CB
 
-nohup JLinkGDBServer -device $dev -endian little -if SWD -select usb=68000009 -log $gdb_log_path >$gdbsv_log_path 2>&1 &
+nohup JLinkGDBServer -device $dev -endian little -if SWD -select usb=30000299 -log $gdb_log_path >$gdbsv_log_path 2>&1 &
 GDBServer_PID=$!
 
 echo "***********************************"
