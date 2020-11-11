@@ -12,6 +12,7 @@ plugins=(
 )
 
 pdf_tool="/Applications/Foxit\ Reader.app/Contents/MacOS/Foxit\ Reader"
+
 # Silicon Labs Internal Only Paths
 export SUPER_DIR=$HOME/work/super
 export PYBGAPI_DIR=$HOME/work/pybgapi
@@ -37,7 +38,6 @@ export PATH_COMMANDER="$PATH_STUDIO/developer/adapter_packs/commander/Commander.
 export PATH_PYBGAPI="$HOME/work/repos/py_bgapi/pybgapi"
 export STUDIO_WORKSPACE="$HOME/SimplicityStudio"
 # export PATH_ARMGCC="$PATH_STUDIO/developer/toolchains/gnu_arm/7.2_2017q4/bin"
-#
 # export PATH_NORDIC_TOOLS="/Applications/Nordic\ Semiconductor/nrfprog"
 #
 # Zephyr Environment Variables
@@ -45,10 +45,12 @@ export ZEPHYR_BASE="$HOME/work/repos/zephyrproject/zephyr"
 export ZEPHYR_TOOLCHAIN_VARIANT="gnuarmemb"
 export GNUARMEMB_TOOLCHAIN_PATH=$ARM_GCC_DIR
 
-# export PATH_PY27="/usr/local/lib/python2.7/site-packages"
-export PATH_PY39="/usr/local/lib/python3.9/site-packages"
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export ANDROID_TOOLS="$ANDROID_HOME/tools"
+export ANDROID_PLATFORM_TOOLS="$ANDROID_HOME/platform-tools"
+
 # 
-export PATH=$PATH_SUP_TOOLS:$PATH_DOCXGEN:$PATH_ARMGCC:$PATH_CTAGS:$PATH_PYBGAPI:$PATH_OPENSSL:$OPENSSL_LIB:$PATH_STUDIO:$PATH_GCC_:$PATH_COMMANDER:$PATH_PYBIN:$PATH_MY_SCRIPT:$PATH_BINUTILS:$PATH_UC_CLI:$PATH
+export PATH=$ANDROID_TOOLS:$ANDROID_PLATFORM_TOOLS:$PATH_SUP_TOOLS:$PATH_DOCXGEN:$PATH_ARMGCC:$PATH_CTAGS:$PATH_PYBGAPI:$PATH_OPENSSL:$OPENSSL_LIB:$PATH_STUDIO:$PATH_GCC_:$PATH_COMMANDER:$PATH_PYBIN:$PATH_MY_SCRIPT:$PATH_BINUTILS:$PATH_UC_CLI:$PATH
 
 export PYTHONPATH=$PATH_PYBGAPI
 
