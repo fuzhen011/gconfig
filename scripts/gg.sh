@@ -107,7 +107,7 @@ if [ $# -ne 4 ]; then
     fi
     # From the commander device info -s ${Serial Number} to get the input of device
     # parameter for JLink GDB Server
-    dev=$(echo ${cmd_out} | awk '{print $4}' | sed "s/P[0-9]*F/PxxxF/g" | sed "s/A[0-9]*F/AxxxF/g" | sed "s/[GI][ML][0-9]*//g")
+    dev=$(echo ${cmd_out} | awk '{print $4}' | sed "s/P[0-9]*F/PxxxF/g" | sed "s/A[0-9]*F/AxxxF/g" | sed "s/[GI][ML][0-9]*//g" | sed "s/B[0-9]*F/BxxxF/g" )
 fi
 echo "Device - ${dev}"
 

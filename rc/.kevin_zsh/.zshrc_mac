@@ -87,3 +87,5 @@ alias gdb='sudo gdb -q'
 
 alias symall="$PATH_MY_SCRIPT/../rc/symall.sh"
 alias pytho3='/usr/local/bin/python3'
+
+alias unfy='find . \( -name "*.cpp" -o -name "*.c" -o -name "*.h" \) -exec uncrustify -c ~/.uncrustify.cfg --no-backup {} +'
