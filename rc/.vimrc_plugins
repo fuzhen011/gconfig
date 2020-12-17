@@ -61,6 +61,7 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'iamcco/markdown-preview.vim'
 " Plugin 'iamcco/markdown-preview.nvim'
 
+" Plugin 'airblade/vim-gitgutter'
 " Deprecated plugins with reason
 " - Alternative is 'ack.vim'
 " Plugin 'EasyGrep'
@@ -88,3 +89,4 @@ set completeopt=longest,menu
 ":PluginClean			- 删除已经从列表移除的插件;添加`!`静默卸载
 ":h						- 帮助和说明文档
 "Vundle的设置到此为止了
+"

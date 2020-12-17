@@ -286,6 +286,7 @@ bind-key '\' split-window -h -c '#{pane_current_path}'
 #set -g status-keys vi
 #set -g mode-keys vi
 
+set focus-events on
 # replace C-b by C-a instead of using both prefixes
 set -gu prefix2
 unbind C-a

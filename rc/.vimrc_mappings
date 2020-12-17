@@ -8,6 +8,9 @@ nnoremap <leader>lc :lclose<CR>	"close locationlist
 nnoremap <leader>qo :copen<CR>	"open QuickFix
 nnoremap <leader>qc :cclose<CR>	"close QuickFix
 
+nnoremap <leader>ce A /**<   */<ESC>3hi
+map <leader>tt <leader>ca <leader>c<space> <leader>ca
+
 " Load the Silabs' uncrustify configuration
 nnoremap <leader>ss :let g:ale_c_uncrustify_options = '-c ~/.uncrustify.cfg -l C --replace'<CR>
 " Load the Zephyr's uncrustify configuration

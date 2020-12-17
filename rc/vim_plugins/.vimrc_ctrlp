@@ -9,3 +9,8 @@ let g:ctrlp_custom_ignore = {
     \ 'file': '\v\.(exe|so|dll|o|obj|d)$',
     \ 'link': 'some_bad_symbolic_links',
     \}
+"Set this to 1 to set searching by filename (as opposed to full path) as the
+"default:
+let g:ctrlp_by_filename = 0
+"Set this to 1 to set regexp search as the default: >
+let g:ctrlp_regexp = 0

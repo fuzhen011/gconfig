@@ -13,7 +13,7 @@ let g:DoxygenToolkit_paramTag_post = " - "
 
 let g:DoxygenToolkit_returnTag = "@return\t"
 
-let g:DoxygenToolkit_blockTag = "@defgroup "
+let g:DoxygenToolkit_blockTag = "******************************************************************\n* @defgroup \n* @brief \n* \n******************************************************************"
 
 " let g:DoxygenToolkit_startCommentBlock="/***************************************************************************//**\<enter>"
 

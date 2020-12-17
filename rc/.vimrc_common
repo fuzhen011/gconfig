@@ -77,11 +77,11 @@ func! SetPythonTitle()
 endfunc
 
 func! SetComment()
-	call setline(1, "/*************************************************************************")
-	call append(line("."), "    > File Name: ".expand("%"))
-	call append(line(".")+1, "    > Author: Kevin")
-	call append(line(".")+2, "    > Created Time: ".strftime("%Y-%m-%d",localtime()))
-	call append(line(".")+3, "    > Description: ")
+	call setline(1,          "/*************************************************************************")
+	call append(line("."),   " *  @file ".expand("%"))
+	call append(line(".")+1, " *  @author: Kevin")
+	call append(line(".")+2, " *  @date: ".strftime("%Y-%m-%d",localtime()))
+	call append(line(".")+3, " *  @brief: ")
 	call append(line(".")+4, " ************************************************************************/")
 	call append(line(".")+5, "")
 endfunc

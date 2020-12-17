@@ -4,7 +4,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:NERDSpaceDelims = 1
 let g:NERDCustomDelimiters = {
-  \ 'cpp': { 'left': '/*','right': '*/' },
-  \ 'c': { 'left': '/*','right': '*/' }
+  \ 'cpp': { 'left': '/*','right': '*/', 'leftAlt': '/**', 'rightAlt':'*/' },
+  \ 'c': { 'left': '/*','right': '*/' , 'leftAlt': '/**', 'rightAlt':'*/' }
   \ }
 let g:NERDCommentEmptyLines = 1
