@@ -20,7 +20,8 @@ files = [".gitignore", "Makefile", "symb.sh"]
 build_dir = ""
 build_folders = [
     "/GNU ARM v7.2.1 - Default",
-    "/GNU ARM v7.2.1 - Debug"
+    "/GNU ARM v7.2.1 - Debug",
+    "/GNU ARM v10.3.1 - Default"
 ]
 
 vimrc_content = [
@@ -95,7 +96,9 @@ def copy_files():
     ext = ""
     for file in files:
         shutil.copyfile(FILES_DIR + file, os.getcwd() + "/" + file)
-    if build_dir.find("Debug") != -1:
+    if build_dir.find("v10.3.1") != -1:
+        ext = ".ssv5_4"
+    elif build_dir.find("Debug") != -1:
         ext = ".ssv5"
     shutil.copyfile(FILES_DIR + "Makefile" + ext, os.getcwd() + "/" + "Makefile")
 
